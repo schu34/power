@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Row, Col } from "react-bootstrap";
 import BoardCell from "./BoardCell";
 
 class Board extends Component {
@@ -9,18 +8,18 @@ class Board extends Component {
 		// const boardWidth = this.props.data[0].length;
 
 		return (
-			<div>
+			<div className= "board-container">
 				{this.props.data.map((row, i) => {
 					return (
-						<Row key={i}>
+						<div key={i} className="board-row">
 							{row.map((cell, i) => {
 								return (
-									<Col md={4}>
+									<div className="board-col">
 										<BoardCell key={i} contents={cell} />
-									</Col>
+									</div>
 								);
 							})}
-						</Row>
+						</div>
 					);
 				})}
 			</div>

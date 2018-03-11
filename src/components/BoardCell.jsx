@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Row, Col } from "react-bootstrap";
 
 class BoardCell extends Component {
 	render() {

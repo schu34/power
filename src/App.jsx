@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import Board from "./components/board.jsx";
-import {Grid} from "react-bootstrap";
 
 class App extends Component {
   constructor(props) {
@@ -16,9 +15,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Grid>
+        <div class="board">
           <Board data={this.state.board} />
-        </Grid>
+        </div>
       </div>
     );
   }
