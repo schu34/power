@@ -10,13 +10,15 @@ class Board extends Component {
 
 		return (
 			<div>
-				{this.props.data.map(row => {
+				{this.props.data.map((row, i) => {
 					return (
-						<Row>
-							{row.map(cell => {
-								<Col>
-									<BoardCell contents={cell} />
-								</Col>;
+						<Row key={i}>
+							{row.map((cell, i) => {
+								return (
+									<Col md={4}>
+										<BoardCell key={i} contents={cell} />
+									</Col>
+								);
 							})}
 						</Row>
 					);
