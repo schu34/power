@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react'
+// import PropTypes from 'prop-types'
 
 class BoardCell extends Component {
-	render() {
-		const { contents } = this.props;
-		return <div className="cell">{JSON.stringify(contents)}</div>;
-	}
+  render () {
+    const { contents } = this.props
+    return <div className='cell'>{JSON.stringify(contents)}</div>
+  }
 }
 
-export default BoardCell;
+export default BoardCell
