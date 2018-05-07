@@ -18,12 +18,15 @@ class App extends Component {
               [{}, {}, {}, {}, {}]]
     };
     this.addCash = this.addCash.bind(this);
-    this.state.interval = setInterval(this.tick, this.state.tickLength);
+    this.state.interval = setInterval(this.tick.bind(this), this.state.tickLength);
+  }
+
+  tick(){
+    this.addCash(1);
   }
 
   addCash(amount){
     const {cash: currentCash, cashMultiplier: multiplier} = this.state
-    console.log("currentCash:", currentCash)
     this.setState({cash: currentCash + amount * multiplier})
   }
 
