@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import './App.css';
-import Board from './components/board.jsx';
+import React, {Component} from 'react'
+import './App.css'
+import Board from './components/board.jsx'
 
 class App extends Component {
   constructor (props) {
@@ -11,12 +11,12 @@ class App extends Component {
       cash: 0,
       cashMultiplier: 1,
       powerMultiplier: 1,
-      board: 
+      board:
        [[{}, {}, {}, {}, {}],
-        [{}, {}, {}, {}, {}],
-        [{}, {}, {}, {}, {}],
-        [{}, {}, {}, {}, {}],
-        [{}, {}, {}, {}, {}]]
+         [{}, {}, {}, {}, {}],
+         [{}, {}, {}, {}, {}],
+         [{}, {}, {}, {}, {}],
+         [{}, {}, {}, {}, {}]]
     }
     this.addCash = this.addCash.bind(this)
     this.state.interval = setInterval(this.tick.bind(this), this.state.tickLength)
