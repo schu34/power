@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import "./App.css";
 import Board from "./components/board.jsx";
 
@@ -8,7 +8,10 @@ class App extends Component {
     this.state = {
       power: 0,
       cash: 0,
-      board: [[{}, {}, {}], [{}, {}, {}], [{}, {}, {}]]
+      board: [[{}, {}, {}, {}], 
+              [{}, {}, {}, {}], 
+              [{}, {}, {}, {}],
+              [{}, {}, {}, {}]]
     };
   }
 
@@ -16,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <div class="board">
-          <Board data={this.state.board} />
+          <Board data={this.state.board}/>
         </div>
       </div>
     );
