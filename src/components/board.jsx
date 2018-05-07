@@ -15,7 +15,7 @@ class Board extends Component {
 							{row.map((cell, i) => {
 								return (
 									<div className="board-col">
-										<BoardCell key={i} contents={cell} />
+										<BoardCell addCash={this.props.addCash} key={i} contents={cell} />
 									</div>
 								);
 							})}

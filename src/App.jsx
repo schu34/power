@@ -6,21 +6,34 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      tickLength: 1000,
       power: 0,
       cash: 0,
-      board: [[{}, {}, {}, {}], 
-              [{}, {}, {}, {}], 
-              [{}, {}, {}, {}],
-              [{}, {}, {}, {}]]
+      cashMultiplier: 1,
+      powerMultiplier: 1,
+      board: [[{}, {}, {}, {}, {}], 
+              [{}, {}, {}, {}, {}], 
+              [{}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}]]
     };
+    this.addCash = this.addCash.bind(this);
+    this.state.interval = setInterval(this.tick, this.state.tickLength);
+  }
+
+  addCash(amount){
+    const {cash: currentCash, cashMultiplier: multiplier} = this.state
+    console.log("currentCash:", currentCash)
+    this.setState({cash: currentCash + amount * multiplier})
   }
 
   render() {
     return (
       <div className="App">
         <div class="board">
-          <Board data={this.state.board}/>
+          <Board addCash={this.addCash} data={this.state.board}/>
         </div>
+        <div className="stats">{"cash: " + this.state.cash} </div>
       </div>
     );
   }
