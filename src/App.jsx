@@ -11,12 +11,7 @@ class App extends Component {
       cash: 0,
       cashMultiplier: 1,
       powerMultiplier: 1,
-      board:
-       [[{}, {}, {}, {}, {}],
-         [{}, {}, {}, {}, {}],
-         [{}, {}, {}, {}, {}],
-         [{}, {}, {}, {}, {}],
-         [{}, {}, {}, {}, {}]]
+      board: generateBoard(50,50)
     }
     this.addCash = this.addCash.bind(this)
     this.state.interval = setInterval(this.tick.bind(this), this.state.tickLength)
@@ -42,5 +37,20 @@ class App extends Component {
     )
   }
 }
+
+
+function generateBoard(height, width){
+	
+	const board = []
+	for(var i = 0; i < height; i++){
+		board.push([])
+		for(var j = 0; j < width; j++){
+			board[i].push({});
+		}
+	}
+
+	return board;
+}
+
 
 export default App
