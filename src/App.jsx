@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './App.css'
 import Board from './components/board.jsx'
-
+import addAssign from "./utils/addAssign";
 class App extends Component {
   constructor (props) {
     super(props)
@@ -52,5 +52,19 @@ function generateBoard(height, width){
 	return board;
 }
 
+const a  ={
+  a: 1,
+  b: 2,
+  c: 3,
+}
+
+const b = {
+  a: 3,
+  b: 2,
+  c: 1,
+  z: 5,
+}
+
+console.log((addAssign(a, b)));
 
 export default App
