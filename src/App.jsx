@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import './App.css'
 import Board from './components/board.jsx'
-import addAssign from "./utils/addAssign";
+import {addAssign} from "./utils/addAssign";
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -9,11 +10,11 @@ class App extends Component {
       tickLength: 1000,
       power: 0,
       cash: 0,
-      cashMultiplier: 1,
-      powerMultiplier: 1,
-      board: generateBoard(50,50)
+      board: generateBoard(5,5)
     }
+
     this.addCash = this.addCash.bind(this)
+    this.updateBoard = this.updateBoard.bind(this);
     this.state.interval = setInterval(this.tick.bind(this), this.state.tickLength)
   }
 
@@ -21,9 +22,28 @@ class App extends Component {
     this.addCash(1)
   }
 
+  updateBoard(){
+    this.board.forEach((row, i)=>{
+      row.forEach((cell, j)=>{
+        if(cell && Object.keys[cell].length){
+          const neighbors = [
+            this.board[i][j+1], 
+            this.board[i][j-1], 
+            this.board[i+1][j], 
+            this.board[i-1][j]
+          ].filter(x=>x);
+
+          cell.tick(neighbors, this.state.upgrades);
+          
+
+        }
+      })
+    })
+  }
+
   addCash (amount) {
     const {cash: currentCash, cashMultiplier: multiplier} = this.state
-    this.setState({cash: currentCash + amount * multiplier})
+    this.setState({cash: currentCash + amount})
   }
 
   render () {
@@ -52,19 +72,5 @@ function generateBoard(height, width){
 	return board;
 }
 
-const a  ={
-  a: 1,
-  b: 2,
-  c: 3,
-}
-
-const b = {
-  a: 3,
-  b: 2,
-  c: 1,
-  z: 5,
-}
-
-console.log((addAssign(a, b)));
 
 export default App

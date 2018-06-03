@@ -11,12 +11,13 @@ class Building{
   }
 
 
-  tick(neighbors){
+  tick(neighbors, upgrades){
+
     neighbors.forEach(n=>{
       if(n){
-        const { addToNeighbors } = n;
+        nUpgrades = upgrades[n.buildingType];
 
-        addProps(this.props, addToNeighbors);
+        addProps(this.props, n.getAddToNeighbors(nUpgrades));
       }
     })
 
