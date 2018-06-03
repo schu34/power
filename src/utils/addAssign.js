@@ -9,18 +9,14 @@ function addAssign(dest, source){
   return dest;
 }
 
-const a  ={
-  a: 1,
-  b: 2,
-  c: 3,
-}
-const b = {
-  a: 3, 
-  b: 2,
-  c: 1,
-  z: 5,
+function addProps(dest, source){
+  addAssign(dest, source);
+
+  if(dest.power < 0) dest.power = 0;
+
+  return dest; 
 }
 
-console.log((addAssign(a, b)));
 
-export default addAssign;
+
+export default addProps;

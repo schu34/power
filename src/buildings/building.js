@@ -1,4 +1,4 @@
-import addAssign from "../utils/addAssign";
+import addProps from "../utils/addAssign";
 
 class Building{
 
@@ -14,14 +14,13 @@ class Building{
   tick(neighbors){
     neighbors.forEach(n=>{
       if(n){
-
         const { addToNeighbors } = n;
 
-        addAssign(this.props, addToNeighbors);
-        addAssign(this.props, this.addToSelf)
-
+        addProps(this.props, addToNeighbors);
       }
     })
+
+    addProps(this.props, this.addToSelf);
   }
 
 }
