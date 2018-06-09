@@ -9,7 +9,7 @@ class Board extends Component {
 
     return (
       <div className='board-container'>
-        {this.props.data.map((row, i) => {
+        {this.props.data.heat.map((row, i) => {
           return (
             <div key={i} className='board-row'>
               {row.map((cell, i) => {
