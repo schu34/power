@@ -7,7 +7,7 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      tickLength: 1000,
+      tickLength: 10,
       power: 0,
       cash: 0,
       totalHeat: 100, 
@@ -32,6 +32,14 @@ class App extends Component {
       
     }, 0)})
   }
+
+  placeBuilding(building, row, col){
+    this.setState(oldState=>{
+      const newState = Object.assign({},oldState)
+      newState.board.buildings[row][col] = building;
+      return newState;
+    })
+  }
   
   updateHeatMap(){
 
@@ -51,7 +59,6 @@ class App extends Component {
         for(var rowOffset = -1; rowOffset <= 1; rowOffset++){
           for(var colOffset = -1; colOffset <= 1; colOffset++){
             if(!colOffset && !rowOffset) continue;
-
             if(heat[row +rowOffset] !== undefined && heat[row+rowOffset][col+colOffset] !== undefined){
               sumDiffs += heat[row+rowOffset][col+colOffset] - thisHeat ;
               div++
@@ -61,13 +68,15 @@ class App extends Component {
         }
 
         let newHeatHere = (thisHeat + ( sumDiffs/div ) * diffusionFactor)
+
         newHeatHere *=.95;
-        if(row === 2 && col === 2){
-          newHeatHere +=10 + Math.random();
-        }
-        if(row === 0 && col === 0 ){
-          newHeatHere -=10;
-        }
+
+        // if(row === 4 && col === 4){
+        //   newHeatHere +=40 
+        // }
+        // if(row === 0 && col === 0 ){
+        //   newHeatHere -=40;
+        // }
         newHeat[row].push(newHeatHere);
 
       }
@@ -122,19 +131,21 @@ class App extends Component {
 
 
 function generateBoard(height, width){
-	
-	const board = {heat: [], power: []};
-	for(var i = 0; i < height; i++){
-		board.heat.push([])
+  
+  const board = {heat: [], power: [], buildings: []};
+  for(var i = 0; i < height; i++){
+    board.heat.push([])
     board.power.push([]);
-		for(var j = 0; j < width; j++){
-			board.heat[i].push(0);
+    board.buildings.push([]);
+    for(var j = 0; j < width; j++){
+      board.heat[i].push(0);
       board.power[i].push(0);
-		}
-	}
-  board.heat[2][2] = 100;
+      board.buildings[i].push({});
+    }
+  }
+  // board.heat[2][2] = 100;
 
-	return board;
+  return board;
 }
 
 
