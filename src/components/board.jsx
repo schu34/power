@@ -12,10 +12,10 @@ class Board extends Component {
         {this.props.data.heat.map((row, i) => {
           return (
             <div key={i} className='board-row'>
-              {row.map((cell, i) => {
+              {row.map((cell, j) => {
                 return (
                   <div className='board-col'>
-                    <BoardCell addCash={this.props.addCash} key={i} contents={cell} />
+                    <BoardCell addCash={this.props.addCash} key={i} heat={cell} building={this.props.data.buildings[i][j]} power={this.props.data.power[i][j]}/>
                   </div>
                 )
               })}

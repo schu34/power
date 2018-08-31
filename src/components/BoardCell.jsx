@@ -3,17 +3,21 @@ import React, { Component } from 'react'
 
 class BoardCell extends Component {
   render () {
-    const { building, temperature, power } = this.props
+    const { building, heat, power } = this.props
     let style = {
-      backgroundColor: getColor(temperature),
+      backgroundColor: getColor(heat),
     }
 
     return (
       <div style={style} className="cell">
-        {building}
+        {/* {displayBuilding(building)} */}
       </div>
     )
   }
+}
+
+function displayBuilding(building){
+  return building.name || "#"
 }
 
 const maxHeat = 100;
